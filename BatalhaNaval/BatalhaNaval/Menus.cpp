@@ -31,8 +31,15 @@ void iniciarJogo() { //Testes por enquanto
 		sucesso = posicionarNavios(player, 5, linha, coluna, posicao);
 	 } while (sucesso == false);
 
-	sucesso = realizarTiro(bot, player, 5, 5);
-
+	do { //Enquanto acertar o navio, ou atirar onde ja foi acertado continua a jogar
+		cout << "\n";
+		cout << "Digite a linha para atirar: 0 a 9\n";
+		cin >> linha;
+		cout << "Digite a coluna para atirar: 0 a 9\n";
+		cin >> coluna;
+		sucesso = realizarTiro(bot, player, linha, coluna);
+	} while (sucesso == true);
+	
 	exibirTabuleiro(player);
 
 }

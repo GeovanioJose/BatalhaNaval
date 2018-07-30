@@ -29,57 +29,55 @@ void exibirTabuleiro(Jogador *jogador) {
 
 bool realizarTiro(Jogador *atacante, Jogador *atacado, int linha, int coluna) {
 
-	bool verificar = false;
-
-	do {
-		if (linha >= 0 && linha < 10) {
-			if (coluna >= 0 && coluna < 10) {
-				//Verificar se existe navio na posicao
-				if (atacado->tabuleiro[linha][coluna] == '5' || atacado->tabuleiro[linha][coluna] == '6' || atacado->tabuleiro[linha][coluna] == '9' || atacado->tabuleiro[linha][coluna] == '3' || atacado->tabuleiro[linha][coluna] == '2') {
-
-					atacante->casas_restantes--; //Se houver numero de casas restantes de navios e decrementada
-
-												 //Atualizando a vida do navio atacado apos a jogada
-					if (atacado->tabuleiro[linha][coluna] == '5') {
-						atacado->navio.vida_encouracado--;
-						atacado->tabuleiro[linha][coluna] == 'X';
-					}
-					if (atacado->tabuleiro[linha][coluna] == '6') { //Navio de guerra 1
-						atacado->navio.vida_guerra1--;
-						atacado->tabuleiro[linha][coluna] == 'X';
-					}
-					if (atacado->tabuleiro[linha][coluna] == '9') { //Navio de guerra 2
-						atacado->navio.vida_guerra2--;
-						atacado->tabuleiro[linha][coluna] == 'X';
-					}
-					if (atacado->tabuleiro[linha][coluna] == '3') {
-						atacado->navio.vida_porta_avioes--;
-						atacado->tabuleiro[linha][coluna] == 'X';
-					}
-					if (atacado->tabuleiro[linha][coluna] == '2') {
-						atacado->navio.vida_submarino--;
-						atacado->tabuleiro[linha][coluna] == 'X';
-					}
-
-					verificar = true;
-				}
-				else if (atacado->tabuleiro[linha][coluna] == '-') {
-					atacado->tabuleiro[linha][coluna] = '~';
-					//Se o tiro for na agua passa a vez pro proximo jogador
-					verificar = false;
-				}
-				else if (atacado->tabuleiro[linha][coluna] == 'X') {
-					verificar = true;
-					//Se o tiro foi dado em um local onde o navio ja foi acertado, realiza uma nova jogada
-				}
-				else {
-					if (atacado->tabuleiro[linha][coluna] == '~')
-						verificar = true;
-					//Se o tiro foi dado em um local onde ja foi atirado, realiza uma nova jogada
-				}
+	if (linha >= 0 && linha < 10) {
+		if (coluna >= 0 && coluna < 10) {
+			//Verificar se existe navio na posicao
+			//Atualizando a vida do navio atacado apos a jogada
+			if (atacado->tabuleiro[linha][coluna] == '5') {
+				atacado->navio.vida_encouracado--;
+				atacado->tabuleiro[linha][coluna] = 'X';
+				atacante->casas_restantes--;
+				return true;
+			}
+			else if (atacado->tabuleiro[linha][coluna] == '6') { //Navio de guerra 1
+				atacado->navio.vida_guerra1--;
+				atacado->tabuleiro[linha][coluna] = 'X';
+				atacante->casas_restantes--;
+				return true;
+			}
+			else if (atacado->tabuleiro[linha][coluna] == '9') { //Navio de guerra 2
+				atacado->navio.vida_guerra2--;
+				atacado->tabuleiro[linha][coluna] = 'X';
+				atacante->casas_restantes--;
+				return true;
+			}
+			else if (atacado->tabuleiro[linha][coluna] == '3') {
+				atacado->navio.vida_porta_avioes--;
+				atacado->tabuleiro[linha][coluna] = 'X';
+				atacante->casas_restantes--;
+				return true;
+			}
+			else if (atacado->tabuleiro[linha][coluna] == '2') {
+				atacado->navio.vida_submarino--;
+				atacado->tabuleiro[linha][coluna] = 'X';
+				atacante->casas_restantes--;
+				return true;
+			}
+			else if (atacado->tabuleiro[linha][coluna] == 'X') {
+				return true;
+				//Se o tiro foi dado em um local onde o navio ja foi acertado, realiza uma nova jogada
+			}
+			else if (atacado->tabuleiro[linha][coluna] == '~'){
+				return true;
+				//Se o tiro foi dado em um local onde ja foi atirado, realiza uma nova jogada
+			}
+			else if (atacado->tabuleiro[linha][coluna] == '-') {
+				atacado->tabuleiro[linha][coluna] = '~';
+				//Se o tiro for na agua passa a vez pro proximo jogador
+				return false;
 			}
 		}
-	} while (verificar == true);
+	}
 
 	return true;
 }
