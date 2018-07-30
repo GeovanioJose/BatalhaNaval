@@ -1,9 +1,12 @@
 #include "Menus.h"
-#include "Jogador.h"
-#include "Navio.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int main() {
 
+	iniciarJogo();
+
+	system("PAUSE");
 	return 0;
 }
 

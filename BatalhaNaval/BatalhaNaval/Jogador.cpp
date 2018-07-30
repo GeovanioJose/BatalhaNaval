@@ -17,8 +17,14 @@ Jogador::~Jogador() {
 	//
 }
 
-void exibirTabuleiro() {
+void exibirTabuleiro(Jogador *jogador) {
 	//Esse tipo de funcao seria inutil implementar agr devido a interface grafica
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			cout << (jogador->tabuleiro[i][j]) << " ";
+		}
+		cout << "\n";
+	}
 }
 
 bool realizarTiro(Jogador *atacante, Jogador *atacado, int linha, int coluna) {
@@ -30,36 +36,44 @@ bool realizarTiro(Jogador *atacante, Jogador *atacado, int linha, int coluna) {
 			if (coluna >= 0 && coluna < 10) {
 				//Verificar se existe navio na posicao
 				if (atacado->tabuleiro[linha][coluna] == '5' || atacado->tabuleiro[linha][coluna] == '6' || atacado->tabuleiro[linha][coluna] == '9' || atacado->tabuleiro[linha][coluna] == '3' || atacado->tabuleiro[linha][coluna] == '2') {
-					atacado->tabuleiro[linha][coluna] = 'X';
 
 					atacante->casas_restantes--; //Se houver numero de casas restantes de navios e decrementada
 
 												 //Atualizando a vida do navio atacado apos a jogada
 					if (atacado->tabuleiro[linha][coluna] == '5') {
 						atacado->navio.vida_encouracado--;
+						atacado->tabuleiro[linha][coluna] == 'X';
 					}
 					if (atacado->tabuleiro[linha][coluna] == '6') { //Navio de guerra 1
 						atacado->navio.vida_guerra1--;
+						atacado->tabuleiro[linha][coluna] == 'X';
 					}
 					if (atacado->tabuleiro[linha][coluna] == '9') { //Navio de guerra 2
 						atacado->navio.vida_guerra2--;
+						atacado->tabuleiro[linha][coluna] == 'X';
 					}
 					if (atacado->tabuleiro[linha][coluna] == '3') {
 						atacado->navio.vida_porta_avioes--;
+						atacado->tabuleiro[linha][coluna] == 'X';
 					}
 					if (atacado->tabuleiro[linha][coluna] == '2') {
 						atacado->navio.vida_submarino--;
+						atacado->tabuleiro[linha][coluna] == 'X';
 					}
 
 					verificar = true;
 				}
 				else if (atacado->tabuleiro[linha][coluna] == '-') {
-					atacado->tabuleiro[linha][coluna] = 'X';
+					atacado->tabuleiro[linha][coluna] = '~';
 					//Se o tiro for na agua passa a vez pro proximo jogador
 					verificar = false;
 				}
+				else if (atacado->tabuleiro[linha][coluna] == 'X') {
+					verificar = true;
+					//Se o tiro foi dado em um local onde o navio ja foi acertado, realiza uma nova jogada
+				}
 				else {
-					if (atacado->tabuleiro[linha][coluna] == 'X')
+					if (atacado->tabuleiro[linha][coluna] == '~')
 						verificar = true;
 					//Se o tiro foi dado em um local onde ja foi atirado, realiza uma nova jogada
 				}
@@ -71,8 +85,6 @@ bool realizarTiro(Jogador *atacante, Jogador *atacado, int linha, int coluna) {
 }
 
 bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c) {
-
-	bool sucesso = false;
 
 	switch (casas) {
 	case 5: {
@@ -96,7 +108,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 							for (int i = linha; i < (linha + 5); i++) {
 								jogador->tabuleiro[i][coluna] = '5';
 							}
-							sucesso = true;
+							return true;
 						}
 					}
 				}
@@ -120,12 +132,13 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 								for (int i = coluna; i < (coluna + 5); i++) {
 									jogador->tabuleiro[linha][i] = '5';
 								}
-								sucesso = true;
+								return true;
 							}
 						}
 					}
 				}
 			}
+			return false;
 		}
 	}
 	case 6: { //6 para navio de guerra 1
@@ -149,7 +162,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 							for (int i = linha; i < (linha + 4); i++) {
 								jogador->tabuleiro[i][coluna] = '6'; //Como existem 2 navios de guerra, entao achei esse jeito de diferenciar onde os 2 estao e nao ficar mt complexo de fazer isso
 							}
-							sucesso = true;
+							return true;
 						}
 					}
 				}
@@ -173,12 +186,13 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 								for (int i = coluna; i < (coluna + 4); i++) {
 									jogador->tabuleiro[linha][i] = '6';
 								}
-								sucesso = true;
+								return true;
 							}
 						}
 					}
 				}
 			}
+			return false;
 		}
 	}
 	case 9: { //9 para navio de guerra 2
@@ -202,7 +216,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 							for (int i = linha; i < (linha + 4); i++) {
 								jogador->tabuleiro[i][coluna] = '9'; //Como existem 2 navios de guerra, entao achei esse jeito de diferenciar onde os 2 estao e nao ficar mt complexo de fazer isso
 							}
-							sucesso = true;
+							return true;
 						}
 					}
 				}
@@ -226,12 +240,13 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 								for (int i = coluna; i < (coluna + 4); i++) {
 									jogador->tabuleiro[linha][i] = '9';
 								}
-								sucesso = true;
+								return true;
 							}
 						}
 					}
 				}
 			}
+			return false;
 		}
 	}
 	case 3: {
@@ -255,7 +270,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 							for (int i = linha; i < (linha + 3); i++) {
 								jogador->tabuleiro[i][coluna] = '3';
 							}
-							sucesso = true;
+							return true;
 						}
 					}
 				}
@@ -279,12 +294,13 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 								for (int i = coluna; i < (coluna + 3); i++) {
 									jogador->tabuleiro[linha][i] = '3';
 								}
-								sucesso = true;
+								return true;
 							}
 						}
 					}
 				}
 			}
+			return false;
 		}
 	}
 	case 2: {
@@ -308,7 +324,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 							for (int i = linha; i < (linha + 2); i++) {
 								jogador->tabuleiro[i][coluna] = '2';
 							}
-							sucesso = true;
+							return true;
 						}
 					}
 				}
@@ -332,15 +348,16 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 								for (int i = coluna; i < (coluna + 2); i++) {
 									jogador->tabuleiro[linha][i] = '2';
 								}
-								sucesso = true;
+								return true;
 							}
 						}
 					}
 				}
 			}
+			return false;
 		}
 	}
 	}
 
-	return sucesso;
+	return false;
 }
