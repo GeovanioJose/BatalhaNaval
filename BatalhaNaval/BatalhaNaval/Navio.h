@@ -6,14 +6,6 @@
 #include <iostream>
 #include <exception>
 
-/*
-const int porta_avioes = 5;
-const int guerra1 = 4;
-const int guerra2 = 4;
-const int encouracado = 3;
-const int submarino = 2;
-*/
-
 class Navio {
 
 private:

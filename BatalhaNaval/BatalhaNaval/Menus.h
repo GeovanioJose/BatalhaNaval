@@ -5,8 +5,6 @@ void menu();
 
 void iniciarJogo();
 
-void encerrarJogo();
-
 #endif
 
 

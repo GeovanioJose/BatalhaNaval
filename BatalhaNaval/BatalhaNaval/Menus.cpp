@@ -18,13 +18,24 @@ void iniciarJogo() { //Testes por enquanto
 	int coluna;
 	char posicao;
 
+	cout << "5 = Navio porta-avioes\n";
+	cout << "6 = Navio de guerra 1\n";
+	cout << "9 = Navio de guerra 2\n";
+	cout << "3 = Navio encouracado\n";
+	cout << "2 = Submarino\n";
+	cout << "- = Posicao desconhecida\n";
+	cout << "~ = Tiro na agua\n";
+	cout << "X = Tiro no navio\n";
+
+	cout << "\n";
+	cout << "SAO APENAS TESTES\n";
 	do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
 		 //A posicao e verificada pela funcao posicionarNavios
 		 //Caso de teste para o posicionamento do navio de 5 casas
 		cout << "\n";
-		cout << "Digite a linha: 0 a 9\n";
+		cout << "Digite a linha para posicionar o navio: 0 a 9\n";
 		cin >> linha;
-		cout << "Digite a coluna: 0 a 9\n";
+		cout << "Digite a coluna para posicionar o navio: 0 a 9\n";
 		cin >> coluna;
 		cout << "Digite a posicao: v ou h\n";
 		cin >> posicao;
@@ -44,6 +55,3 @@ void iniciarJogo() { //Testes por enquanto
 
 }
 
-void encerrarJogo() {
-
-}
