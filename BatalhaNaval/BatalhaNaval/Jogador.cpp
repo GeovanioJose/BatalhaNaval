@@ -18,7 +18,7 @@ Jogador::~Jogador() {
 }
 
 void exibirTabuleiro(Jogador *jogador) {
-	//Esse tipo de funcao seria inutil implementar agr devido a interface grafica
+	//Essa funcao so serve para testes
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
 			cout << (jogador->tabuleiro[i][j]) << " ";
@@ -91,7 +91,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 				if (c == 'v') {
 
 					//Verificar se e possivel posicionar o navio
-					if (10 - linha != 1) {
+					if (10 - linha >= 5) {
 
 						//Verificar se nao ha outros navios posicionados
 						int espacos = 0;
@@ -114,7 +114,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 					if (c == 'h') {
 
 						//Verificar se e possivel posicionar o navio
-						if (10 - coluna != 1) {
+						if (10 - coluna >= 5) {
 
 							//Verificar se nao ha outros navios posicionados
 							int espacos = 0;
@@ -145,7 +145,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 				if (c == 'v') {
 
 					//Verificar se e possivel posicionar o navio
-					if (10 - linha != 1) {
+					if (10 - linha >= 4) {
 
 						//Verificar se nao ha outros navios posicionados
 						int espacos = 0;
@@ -168,7 +168,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 					if (c == 'h') {
 
 						//Verificar se e possivel posicionar o navio
-						if (10 - coluna != 1) {
+						if (10 - coluna >= 4) {
 
 							//Verificar se nao ha outros navios posicionados
 							int espacos = 0;
@@ -199,7 +199,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 				if (c == 'v') {
 
 					//Verificar se e possivel posicionar o navio
-					if (10 - linha != 1) {
+					if (10 - linha >= 4) {
 
 						//Verificar se nao ha outros navios posicionados
 						int espacos = 0;
@@ -222,7 +222,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 					if (c == 'h') {
 
 						//Verificar se e possivel posicionar o navio
-						if (10 - coluna != 1) {
+						if (10 - coluna >= 4) {
 
 							//Verificar se nao ha outros navios posicionados
 							int espacos = 0;
@@ -253,7 +253,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 				if (c == 'v') {
 
 					//Verificar se e possivel posicionar o navio
-					if (10 - linha != 1) {
+					if (10 - linha >= 3) {
 
 						//Verificar se nao ha outros navios posicionados
 						int espacos = 0;
@@ -276,7 +276,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 					if (c == 'h') {
 
 						//Verificar se e possivel posicionar o navio
-						if (10 - coluna != 1) {
+						if (10 - coluna >= 3) {
 
 							//Verificar se nao ha outros navios posicionados
 							int espacos = 0;
@@ -307,7 +307,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 				if (c == 'v') {
 
 					//Verificar se e possivel posicionar o navio
-					if (10 - linha != 1) {
+					if (10 - linha >= 2) {
 
 						//Verificar se nao ha outros navios posicionados
 						int espacos = 0;
@@ -330,7 +330,7 @@ bool posicionarNavios(Jogador *jogador, int casas, int linha, int coluna, char c
 					if (c == 'h') {
 
 						//Verificar se e possivel posicionar o navio
-						if (10 - coluna != 1) {
+						if (10 - coluna >= 2) {
 
 							//Verificar se nao ha outros navios posicionados
 							int espacos = 0;

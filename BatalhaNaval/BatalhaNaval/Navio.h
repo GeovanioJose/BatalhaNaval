@@ -1,6 +1,7 @@
 #ifndef NAVIO_H_
 #define NAVIO_H_
 
+#include <ctime>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
