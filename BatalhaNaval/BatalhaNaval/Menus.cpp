@@ -43,111 +43,125 @@ void iniciarJogo() { //Testes por enquanto
 		cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
 		cin >> posicao;
 		sucesso = posicionarNavios(player, 5, linha, coluna, posicao);
-	 } while (sucesso == false);
-	 
-	 do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
-		  //A posicao e verificada pela funcao posicionarNavios
-		  //Caso de teste para o posicionamento do primeiro navio de 4 casas
-		 cout << "\n";
-		 cout << "Digite a linha para posicionar o navio de guerra 1:  0a 9\n";
-		 cin >> linha;
-		 cout << "Digite a coluna para posicionar o navio de guerra 1: 0 a 9\n";
-		 cin >> coluna;
-		 cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
-		 cin >> posicao;
-		 sucesso = posicionarNavios(player, 6, linha, coluna, posicao);
-	 } while (sucesso == false);
+	} while (sucesso == false);
 
-	 do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
-		  //A posicao e verificada pela funcao posicionarNavios
-		  //Caso de teste para o posicionamento do segundo navio de 4 casas
-		 cout << "\n";
-		 cout << "Digite a linha para posicionar o navio de guerra 2: 0 a 9\n";
-		 cin >> linha;
-		 cout << "Digite a coluna para posicionar o navio de guerra 2: 0 a 9\n";
-		 cin >> coluna;
-		 cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
-		 cin >> posicao;
-		 sucesso = posicionarNavios(player, 9, linha, coluna, posicao);
-	 } while (sucesso == false);
-
-	 do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
-		  //A posicao e verificada pela funcao posicionarNavios
-		  //Caso de teste para o posicionamento do navio de 3 casas
-		 cout << "\n";
-		 cout << "Digite a linha para posicionar o navio encouracado: 0 a 9\n";
-		 cin >> linha;
-		 cout << "Digite a coluna para posicionar o navio encouracado: 0 a 9\n";
-		 cin >> coluna;
-		 cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
-		 cin >> posicao;
-		 sucesso = posicionarNavios(player, 3, linha, coluna, posicao);
-	 } while (sucesso == false);
-
-	 do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
-		  //A posicao e verificada pela funcao posicionarNavios
-		  //Caso de teste para o posicionamento do submarino de 2 casas
-		 cout << "\n";
-		 cout << "Digite a linha para posicionar o submarino: 0 a 9\n";
-		 cin >> linha;
-		 cout << "Digite a coluna para posicionar o submarino: 0 a 9\n";
-		 cin >> coluna;
-		 cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
-		 cin >> posicao;
-		 sucesso = posicionarNavios(player, 2, linha, coluna, posicao);
-	 } while (sucesso == false);
-	 
-	//POSICIONAMENTO DOS NAVIOS DO BOT ABAIXO
-	 
-	 do { 
-		 srand(time(NULL));
-		 linha = rand() % 8 + 1;
-		 coluna = rand() % 8 + 1;
-		 sucesso = posicionarNavios(bot, 5, linha, coluna, 'v');
-	 } while (sucesso == false);
-
-	 do {
-		 srand(time(NULL));
-		 linha = rand() % 8 + 1;
-		 coluna = rand() % 8 + 1;
-		 sucesso = posicionarNavios(bot, 6, linha, coluna, 'v');
-	 } while (sucesso == false);
-
-	 do {
-		 srand(time(NULL));
-		 linha = rand() % 8 + 1;
-		 coluna = rand() % 8 + 1;
-		 sucesso = posicionarNavios(bot, 9, linha, coluna, 'h');
-	 } while (sucesso == false);
-
-	 do {
-		 srand(time(NULL));
-		 linha = rand() % 8 + 1;
-		 coluna = rand() % 8 + 1;
-		 sucesso = posicionarNavios(bot, 3, linha, coluna, 'v');
-	 } while (sucesso == false);
-
-	 do {
-		 srand(time(NULL));
-		 linha = rand() % 8 + 1;
-		 coluna = rand() % 8 + 1;
-		 sucesso = posicionarNavios(bot, 2, linha, coluna, 'h');
-	 } while (sucesso == false);
-	 /*
-	do { //Enquanto acertar o navio, ou atirar onde ja foi acertado continua a jogar
+	do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
+		 //A posicao e verificada pela funcao posicionarNavios
+		 //Caso de teste para o posicionamento do primeiro navio de 4 casas
 		cout << "\n";
-		cout << "Digite a linha para atirar: 0 a 9\n";
+		cout << "Digite a linha para posicionar o navio de guerra 1:  0a 9\n";
 		cin >> linha;
-		cout << "Digite a coluna para atirar: 0 a 9\n";
+		cout << "Digite a coluna para posicionar o navio de guerra 1: 0 a 9\n";
 		cin >> coluna;
-		sucesso = realizarTiro(bot, player, linha, coluna);
-	} while (sucesso == true);
-	*/
-	exibirTabuleiro(player);
+		cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
+		cin >> posicao;
+		sucesso = posicionarNavios(player, 6, linha, coluna, posicao);
+	} while (sucesso == false);
+
+	do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
+		 //A posicao e verificada pela funcao posicionarNavios
+		 //Caso de teste para o posicionamento do segundo navio de 4 casas
+		cout << "\n";
+		cout << "Digite a linha para posicionar o navio de guerra 2: 0 a 9\n";
+		cin >> linha;
+		cout << "Digite a coluna para posicionar o navio de guerra 2: 0 a 9\n";
+		cin >> coluna;
+		cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
+		cin >> posicao;
+		sucesso = posicionarNavios(player, 9, linha, coluna, posicao);
+	} while (sucesso == false);
+
+	do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
+		 //A posicao e verificada pela funcao posicionarNavios
+		 //Caso de teste para o posicionamento do navio de 3 casas
+		cout << "\n";
+		cout << "Digite a linha para posicionar o navio encouracado: 0 a 9\n";
+		cin >> linha;
+		cout << "Digite a coluna para posicionar o navio encouracado: 0 a 9\n";
+		cin >> coluna;
+		cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
+		cin >> posicao;
+		sucesso = posicionarNavios(player, 3, linha, coluna, posicao);
+	} while (sucesso == false);
+
+	do { //Enquanto a posicao de escolha do navio nao for valida, o usuario devera continuar informando as entradas
+		 //A posicao e verificada pela funcao posicionarNavios
+		 //Caso de teste para o posicionamento do submarino de 2 casas
+		cout << "\n";
+		cout << "Digite a linha para posicionar o submarino: 0 a 9\n";
+		cin >> linha;
+		cout << "Digite a coluna para posicionar o submarino: 0 a 9\n";
+		cin >> coluna;
+		cout << "Digite a posicao que deseja: 'v' para vertical ou 'h' para horizontal\n";
+		cin >> posicao;
+		sucesso = posicionarNavios(player, 2, linha, coluna, posicao);
+	} while (sucesso == false);
+
+	//POSICIONAMENTO DOS NAVIOS DO BOT ABAIXO
+
+	do {
+		srand(time(NULL));
+		linha = rand() % 8 + 1;
+		coluna = rand() % 8 + 1;
+		sucesso = posicionarNavios(bot, 5, linha, coluna, 'v');
+	} while (sucesso == false);
+
+	do {
+		srand(time(NULL));
+		linha = rand() % 8 + 1;
+		coluna = rand() % 8 + 1;
+		sucesso = posicionarNavios(bot, 6, linha, coluna, 'v');
+	} while (sucesso == false);
+
+	do {
+		srand(time(NULL));
+		linha = rand() % 8 + 1;
+		coluna = rand() % 8 + 1;
+		sucesso = posicionarNavios(bot, 9, linha, coluna, 'h');
+	} while (sucesso == false);
+
+	do {
+		srand(time(NULL));
+		linha = rand() % 8 + 1;
+		coluna = rand() % 8 + 1;
+		sucesso = posicionarNavios(bot, 3, linha, coluna, 'v');
+	} while (sucesso == false);
+
+	do {
+		srand(time(NULL));
+		linha = rand() % 8 + 1;
+		coluna = rand() % 8 + 1;
+		sucesso = posicionarNavios(bot, 2, linha, coluna, 'h');
+	} while (sucesso == false);
+
+	//ESSE E O INICIO DO JOGO, O LOOP QUE REALIZA TODAS AS JOGADAS ATE QUE HAJA UM VENCEDOR
+
+	while (player->casas_restantes > 0 || bot->casas_restantes > 0) { //O loop so acaba quando alguem destroi todas as casas de navios do adversario
+
+		do { //Vez do jogador, enquanto acertar o navio, ou atirar onde ja foi acertado continua a jogar
+			cout << "\n";
+			cout << "Vez do jogador\n";
+			cout << "Digite a linha para atirar: 0 a 9\n";
+			cin >> linha;
+			cout << "Digite a coluna para atirar: 0 a 9\n";
+			cin >> coluna;
+			sucesso = realizarTiro(bot, player, linha, coluna);
+		} while (sucesso == true);
+
+		do { //Aqui e onde o bot realiza as jogadas, no momento esta faltando a inteligencia
+			cout << "\n";
+			cout << "Vez do bot\n";
+			sucesso = realizarTiro(player, bot, linha, coluna);
+		} while (sucesso == true);
+	}
+	 
+	//FIM DO JOGO
+
+	exibirTabuleiro(player); //apenas para testes
 
 	cout << "\n";
 
-	exibirTabuleiro(bot);
+	exibirTabuleiro(bot); //apenas para testes
 
 }
 
