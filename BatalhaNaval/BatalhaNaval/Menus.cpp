@@ -133,8 +133,6 @@ void iniciarJogo() { //Testes por enquanto
 		 coluna = rand() % 8 + 1;
 		 sucesso = posicionarNavios(bot, 2, linha, coluna, 'h');
 	 } while (sucesso == false);
-	 
-
 	 /*
 	do { //Enquanto acertar o navio, ou atirar onde ja foi acertado continua a jogar
 		cout << "\n";
@@ -146,6 +144,10 @@ void iniciarJogo() { //Testes por enquanto
 	} while (sucesso == true);
 	*/
 	exibirTabuleiro(player);
+
+	cout << "\n";
+
+	exibirTabuleiro(bot);
 
 }
 
